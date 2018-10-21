@@ -9,3 +9,10 @@
 *.xlsx
 *.docx
 *.pdf
+*.dat
+*.xml
+*.md
+*.dbf
+*.shx
+*.shp
+*.sbn
