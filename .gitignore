@@ -3,4 +3,5 @@
 *.jpg
 *.DS_Store
 *.pkl
-
+*.html
+*.txt
