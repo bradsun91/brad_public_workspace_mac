@@ -4,11 +4,18 @@ from pykalman import KalmanFilter
 import pandas as pd
 import glob
 import csv
-
-
-
 import statsmodels.api as sm
 from statsmodels import regression
+
+
+# =============================================================================================================
+# 10/25/2018 Updated:
+
+
+# =============================================================================================================
+# 10/01/2018 Updated:
+
+
 def linreg(x, y):
 
     x = sm.add_constant(x)
@@ -27,9 +34,6 @@ def linreg(x, y):
     return model.summary()
 # =============================================================================================================
 # 7/11/2018 Updated:
-
-
-
 
 
 # =============================================================================================================
@@ -675,6 +679,7 @@ def replace_day_open_for_Q(df, time_col):
     return df
 
 
+# This part need to be re-editted
 def keep_downloading_data():
     folder_path = '/Users/brad_sun/Downloads/accern/accern_data/'
     ticker_file = 'sp500_csv_list.csv'
