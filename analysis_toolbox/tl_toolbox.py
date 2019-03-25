@@ -18,6 +18,34 @@ from IPython.display import clear_output
 %matplotlib inline
 
 # ===================================================================================================================
+# 3-24-2019
+# download data from yahoo finance and plot correlation heatmaps on downloaded stocks' returns
+def corr_heatmaps_yf(symbol_list, price_col, start_str, end_str, corr_thresh):
+    """
+    Documentation: 
+    1. start/end_str is of the format of, e.g. "2017-09-15"
+    2. corr_thresh ranges from -1 to 1
+    
+    """
+    df = yf.download(symbol_list, start = start_str, end = end_str)
+    stacked = df.stack().reset_index()
+    stacked.columns = ['date', 'tickers', 'close', 'close2', 'high', 'low', 'open','volume']
+    stacked_ = stacked[['date', 'tickers', 'open', 'high', 'low', 'close', 'volume']]
+    stacked_col = stacked_[['date', 'tickers', price_col]]
+    stacked_col_pvt = pd.pivot_table(stacked_col, values = price_col, index = 'date', columns = 'tickers')
+    stacked_col_pvt_pctchg = stacked_col_pvt.pct_change()
+    fig, ax = plt.subplots(figsize = (12, 8))
+    sns.heatmap(stacked_col_pvt_pctchg.corr()[(stacked_col_pvt_pctchg.corr()>corr_thresh)|(stacked_col_pvt_pctchg.corr()<-corr_thresh)], ax = ax, cmap = 'Blues', vmax = 1.0, vmin = -1.0, annot=True)
+    plt.xlabel('stocks', fontsize = 15)
+    plt.ylabel('stocks', fontsize = 15)
+    plt.xticks(fontsize = 17)
+    plt.yticks(fontsize = 17)
+    return stacked_col_pvt_pctchg
+
+
+
+
+# ===================================================================================================================
 # 3-9-2019 updated
 # 直接进入到存储libs python文件的folder之中，调用各种modules:
 lib_path = r'C:/Users/workspace/brad_public_workspace_on_win/brad_public_workspace_on_win/backtester/brad_vbacktester/'
