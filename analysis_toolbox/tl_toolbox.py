@@ -37,6 +37,20 @@ from indicators import MACD
 
 
 # ===================================================================================================================
+# 使用os.getcwd()调用当前path
+import os, sys
+import codecs
+current_path = os.getcwd()
+text_file = current_path+"/readme.txt"
+f = codecs.open(text_file, "r+", "utf-8")
+s = f.read()
+print (current_path)
+print (s)
+
+
+
+
+# ===================================================================================================================
 # 3-7-2019 updated
 # 最终目标：plot correlation heatmaps
 # 重要新知识点：利用reduce一次性merge多个csv dataframes
