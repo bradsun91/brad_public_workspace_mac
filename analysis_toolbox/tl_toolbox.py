@@ -17,6 +17,20 @@ from IPython.display import clear_output
 
 %matplotlib inline
 
+
+# ===================================================================================================================
+# 3-27-2019 updated
+# 使用os.getcwd()调用当前path
+import os, sys
+import codecs
+current_path = os.getcwd()
+text_file = current_path+"/readme.txt"
+f = codecs.open(text_file, "r+", "utf-8")
+s = f.read()
+print (current_path)
+print (s)
+
+
 # ===================================================================================================================
 # 3-9-2019 updated
 # 直接进入到存储libs python文件的folder之中，调用各种modules:
@@ -34,20 +48,6 @@ from data import process_sngl_data
 from plot import plot_cum_returns
 from strategies import Strat_SMA
 from indicators import MACD
-
-
-# ===================================================================================================================
-# 使用os.getcwd()调用当前path
-import os, sys
-import codecs
-current_path = os.getcwd()
-text_file = current_path+"/readme.txt"
-f = codecs.open(text_file, "r+", "utf-8")
-s = f.read()
-print (current_path)
-print (s)
-
-
 
 
 # ===================================================================================================================
