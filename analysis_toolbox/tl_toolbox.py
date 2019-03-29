@@ -17,6 +17,20 @@ from IPython.display import clear_output
 
 %matplotlib inline
 
+
+# ===================================================================================================================
+# 3-27-2019 updated
+# 使用os.getcwd()调用当前path
+import os, sys
+import codecs
+current_path = os.getcwd()
+text_file = current_path+"/readme.txt"
+f = codecs.open(text_file, "r+", "utf-8")
+s = f.read()
+print (current_path)
+print (s)
+
+
 # ===================================================================================================================
 # 3-24-2019
 # download data from yahoo finance and plot correlation heatmaps on downloaded stocks' returns
