@@ -81,7 +81,7 @@ for i, item in enumerate(test_df['articles']):
 keys = ['a', 'b', 'c']
 values = [1, 2, 3]
 dictionary = dict(zip(keys, values))
-print dictionary
+print (dictionary)
 # 输出:
 # {'a': 1, 'c': 3, 'b': 2}
 
