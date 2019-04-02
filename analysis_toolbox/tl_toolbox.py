@@ -19,6 +19,29 @@ from IPython.display import clear_output
 
 # ===================================================================================================================
 # 4-2-2019 updated
+# 统计中的排列组合：
+def fac(n):
+    factorial = 1
+    if n == 0:
+         factorial = 0
+    else:
+        for i in range(1, n + 1):
+            factorial *= i
+#             print(factorial)
+    return factorial
+
+def C_m_n(m, n):
+    combo_num = fac(m)/(fac(m-n)*fac(n))
+    return combo_num
+    # 从m里挑选n个
+    
+def A_m_n(m, n):
+    combo_num = fac(m)/fac(n)
+    return combo_num
+
+
+# ===================================================================================================================
+# 4-2-2019 updated
 # 在一个序列中进行factorial式的两两运算（在这里为比较两个字符串的相似度），并记录(append到list里)生成记录，便于后期生成dataframe：
 test_df = pd.DataFrame(["test121121", "test121223", "test121123", "test123124", "test121215", "test123126"])
 test_df.columns = ['articles']
