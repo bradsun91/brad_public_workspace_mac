@@ -17,6 +17,75 @@ from IPython.display import clear_output
 
 %matplotlib inline
 
+# ===================================================================================================================
+# 4-2-2019 updated
+# 统计中的排列组合：
+def fac(n):
+    factorial = 1
+    if n == 0:
+         factorial = 0
+    else:
+        for i in range(1, n + 1):
+            factorial *= i
+#             print(factorial)
+    return factorial
+
+def C_m_n(m, n):
+    combo_num = fac(m)/(fac(m-n)*fac(n))
+    return combo_num
+    # 从m里挑选n个
+    
+def A_m_n(m, n):
+    combo_num = fac(m)/fac(n)
+    return combo_num
+
+
+# ===================================================================================================================
+# 4-2-2019 updated
+# 在一个序列中进行factorial式的两两运算（在这里为比较两个字符串的相似度），并记录(append到list里)生成记录，便于后期生成dataframe：
+test_df = pd.DataFrame(["test121121", "test121223", "test121123", "test123124", "test121215", "test123126"])
+test_df.columns = ['articles']
+start = 0
+ratio_list_j = []
+first_index = []
+first_items = []
+second_items = []
+
+# 对于比较目标一进行循环：
+for i, item in enumerate(test_df['articles']):
+#     ratio_list_j_ = []
+    # 确定特定的比较目标一之后，分别将比较目标一和比较目标二做循环运算处理：
+    for j in range(i+1, len(test_df)):
+        item_i = test_df['articles'][i]
+        item_j = test_df['articles'][j]
+        ratio = apply_difflib(item_i, item_j)
+        ratio_list_j.append(ratio)
+        print ("Index", start, item_i, item_j)
+        print ("Repitition Rate", ratio)
+        start = start+1
+        print ("====")
+#         max_ratio = np.max(ratio_list_j_)
+        first_index.append(i)
+        first_items.append(item_i)
+        second_items.append(item_j)
+    print (first_index)
+    print ("ratio_list_j", ratio_list_j)
+    print ("MAX", max_ratio)
+    print ("++++")
+
+
+
+# ===================================================================================================================
+# 4-2-2019 updated
+# Python - 利用zip函数将两个列表(list)组成字典(dict)
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+dictionary = dict(zip(keys, values))
+print (dictionary)
+# 输出:
+# {'a': 1, 'c': 3, 'b': 2}
+
+
 
 # ===================================================================================================================
 # 3-27-2019 updated
