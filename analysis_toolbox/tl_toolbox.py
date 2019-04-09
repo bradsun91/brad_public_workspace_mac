@@ -18,6 +18,17 @@ from IPython.display import clear_output
 %matplotlib inline
 
 # ===================================================================================================================
+# 4-9-2019 updated
+# 计算程序运行时间
+import datetime
+starttime = datetime.datetime.now()
+print ("Executing...")
+endtime = datetime.datetime.now()
+duration = (endtime - starttime).seconds
+print ("Execution takes {} seconds".format(duration))
+
+
+# ===================================================================================================================
 # 4-2-2019 updated
 # 统计中的排列组合：
 def fac(n):
