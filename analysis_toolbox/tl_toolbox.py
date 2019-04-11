@@ -17,6 +17,39 @@ from IPython.display import clear_output
 
 %matplotlib inline
 
+
+# ===================================================================================================================
+# 4-11-2019 updated
+# 两个文件夹之间的文件做对比，若满足xx条件，则将一个文件夹的某个文件复制粘贴到目标文件夹之中
+
+all_path = "C:\\Users\\workspace\\brad_public_workspace_on_win\\non_code_files_brad_public_workspace_on_win\\brad_public_workspace_on_win_non_code_files\\SH_tongliang\\reports\\百度流量项目\\2-20-2019文章自动化Brad_to_Sha\\4-9-2019-compose\\4-10-2019-4416篇/*.docx"
+write_files = "C:/Users/Brad Sun/Desktop/write_files/"
+read_files = "C:/Users/Brad Sun/Desktop/4-10-2019-4416篇/"
+all_list_desktop = glob(all_path)
+
+def copy_paste(read_file, write_file):
+    content = open(read_file, 'rb').read()
+    open(write_file, 'wb').write(content)
+    
+count_ = 0
+for index in selected_index_list:
+    for title in all_list_desktop:
+        title_name = title.split("\\")[-1]
+        title_name_number = int(title_name.split("_")[0])
+        if index == title_name_number:
+            count_+=1
+            write_path = write_files + title_name 
+            read_path = read_files + title_name
+            try:
+                copy_paste(read_path, write_path)
+            except FileNotFoundError:
+                print ("Error title: ", title_name)
+#             print ("title_name", title_name)
+#             print ("write_path", write_path)
+#             print ("read_path", read_path)
+print (count_)
+
+
 # ===================================================================================================================
 # 4-9-2019 updated
 # 计算程序运行时间
