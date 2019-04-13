@@ -9,9 +9,12 @@ from __future__ import print_function
 
 import datetime
 import psycopg2
-import fix_yahoo_finance as yf
+import os, sys
+print (sys.version_info)
+# import fix_yahoo_finance as yf
+from pandas_datareader import data as pdr
 import pandas as pd
-import os
+
 
 MASTER_LIST_FAILED_SYMBOLS = []
 
@@ -99,10 +102,11 @@ def load_yhoo_data(symbol, symbol_id, vendor_id, conn):
     start_dt = datetime.datetime(2004,12,30)
     end_dt = datetime.datetime(2017,12,1)
     
-    yf.pdr_override()
+    # yf.pdr_override()
     
     try:
-        data = yf.download(symbol, start=start_dt, end=end_dt)
+        # data = yf.download(symbol, start=start_dt, end=end_dt)
+        data = pdr.get_data_yahoo(symbol, start=start_dt, end=end_dt)
     except:
         MASTER_LIST_FAILED_SYMBOLS.append(symbol)
         raise Exception('Failed to load {}'.format(symbol))
@@ -154,7 +158,7 @@ def main():
     # Connect to our Postgres database 'securities_master'
     
     db_info_file = "database_info.txt"
-    db_info_file_p = "\\" + db_info_file
+    db_info_file_p = "/" + db_info_file
     # necessary database info to connect
     db_host, db_user, db_password, db_name = load_db_credential_info(db_info_file_p)
     
@@ -182,7 +186,7 @@ def main():
         try:
             load_yhoo_data(symbol, symbol_id, vendor_id, conn)
         except:
-            continue
+            print("failed!!")
         
     # lets write our failed stock list to text file for reference
     file_to_write = open('failed_symbols.txt', 'w')

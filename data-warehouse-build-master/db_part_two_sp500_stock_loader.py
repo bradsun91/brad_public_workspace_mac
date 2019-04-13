@@ -7,10 +7,14 @@ Created on Tue Jul 10 11:16:08 2018
 from __future__ import print_function
 
 import datetime
+import os, sys
+print (sys.version_info)
 import bs4
 import psycopg2
 import requests
-import os
+
+
+
 
 
 def parse_wiki_snp500():
@@ -24,7 +28,7 @@ def parse_wiki_snp500():
     # return html of our desired S&P 500 webapge on wikipedia
     response = requests.get("http://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
     # soup object
-    soup = bs4.BeautifulSoup(response.text)
+    soup = bs4.BeautifulSoup(response.text,features="html.parser")
     
     # CSS Selector syntax: find first table, select all rows and skip headers row 
     symbols_list = soup.select('table')[0].select('tr')[1:]
@@ -83,7 +87,7 @@ def load_db_info(f_name_path):
 
 def main():
     db_info_file = "database_info.txt"
-    db_info_file_p = "\\" + db_info_file
+    db_info_file_p = "/" + db_info_file
     # necessary database info to connect and load our symbols further below
     db_host, db_user, db_password, db_name = load_db_info(db_info_file_p)
     
