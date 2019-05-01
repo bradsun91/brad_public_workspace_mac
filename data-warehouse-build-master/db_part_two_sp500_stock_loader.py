@@ -12,12 +12,12 @@ print (sys.version_info)
 import bs4
 import psycopg2
 import requests
-
-
+import time
 
 
 
 def parse_wiki_snp500():
+    print ("testing parse_wiki_sp500")
     """
     Download and parse Wikipedia for the current list of S&P500 companies.
     return:
@@ -26,14 +26,33 @@ def parse_wiki_snp500():
     now = datetime.datetime.utcnow()
     
     # return html of our desired S&P 500 webapge on wikipedia
-    response = requests.get("http://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+    print ("testing well till now")
+
+    # response = requests.get("http://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+
     # soup object
-    soup = bs4.BeautifulSoup(response.text,features="html.parser")
+    # soup = bs4.BeautifulSoup(response.text, features="html.parser")
+
+    response = ''
+    while response == '':
+        try:
+            response = requests.get("http://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+            break
+        except:
+            print("Connection refused by the server..")
+            print("Let me sleep for 5 seconds")
+            print("ZZzzzz...")
+            time.sleep(5)
+            print("Was a nice sleep, now let me continue...")
+            continue
+    soup = bs4.BeautifulSoup(response.text, features="html.parser")
+
     
     # CSS Selector syntax: find first table, select all rows and skip headers row 
     symbols_list = soup.select('table')[0].select('tr')[1:]
     
     symbols = []
+
     for i, symbol in enumerate(symbols_list):
         # standard cell containing our data: 'td'
         tds = symbol.select('td')
@@ -42,10 +61,12 @@ def parse_wiki_snp500():
                          tds[1].select('a')[0].text,
                          tds[3].text, 'USD', now, now)
                       )
+    print("successfully tested parse_wiki_sp500")
     return symbols
 
 
 def insert_snp500_symbols_postgres(symbols, db_host, db_user, db_password, db_name):
+    print("testing insert_snp500_symbols_postgres")
     """
     Load S&P500 symbols into our PostgreSQL database.
     args:
@@ -67,9 +88,10 @@ def insert_snp500_symbols_postgres(symbols, db_host, db_user, db_password, db_na
     with conn:
         cur = conn.cursor()
         cur.executemany(final_str, symbols)
-
+    print("successfully tested insert_snp500_symbols_postgres")
         
 def load_db_info(f_name_path):
+    print ("testing load_db_info")
     """
     load text file holding our database credential info and the database name
     args:
@@ -82,6 +104,7 @@ def load_db_info(f_name_path):
     f = open(cur_path + f_name_path, 'r')
     lines = f.readlines()[1:]
     lines = lines[0].split(',')
+    print("successfully tested load_db_info")
     return lines
 
 

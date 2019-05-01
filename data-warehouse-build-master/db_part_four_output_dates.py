@@ -69,7 +69,7 @@ def select_first_last_dates(symbol_id, symbol, conn):
 def main():
     # Connect to our Postgres database 'securities_master'
     db_info_file = "database_info.txt"
-    db_info_file_p = "\\" + db_info_file
+    db_info_file_p = "/" + db_info_file
     # necessary database info to connect
     db_host, db_user, db_password, db_name = load_db_credential_info(db_info_file_p)
     
@@ -82,7 +82,7 @@ def main():
     stock_data = obtain_list_db_tickers(conn)
     
     # load in our 'failed' stocks to ensure we skip these
-    failed_symbols_file = '\\failed_symbols.txt'
+    failed_symbols_file = '/failed_symbols.txt'
     cur_path = os.getcwd()
     failed_symbols_file_path = cur_path + failed_symbols_file
     
