@@ -17,6 +17,11 @@ from IPython.display import clear_output
 
 %matplotlib inline
 
+# 链接在本地电脑上的某个sql数据库需要的python代码和信息：
+conn = psycopg2.connect(database="brad_particle", user=postgres, password=311***, host="127.0.0.1",
+                                port="5432")
+
+
 
 # ===================================================================================================================
 # 4-23-2019 updated
