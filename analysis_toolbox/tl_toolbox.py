@@ -16,7 +16,17 @@ import plotly.graph_objs as go
 from IPython.display import clear_output
 
 %matplotlib inline
-
+# ===================================================================================================================
+# 05-17-2019 
+# 分割一栏into两栏split one column into two columns
+# new data frame with split value columns 
+new = data["Name"].str.split(" ", n = 1, expand = True) 
+  
+# making separate first name column from new data frame 
+data["First Name"]= new[0] 
+  
+# making separate last name column from new data frame 
+data["Last Name"]= new[1] 
 
 # ===================================================================================================================
 # 5-08-2019 updated
