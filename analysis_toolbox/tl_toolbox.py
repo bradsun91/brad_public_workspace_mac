@@ -16,6 +16,13 @@ import plotly.graph_objs as go
 from IPython.display import clear_output
 
 %matplotlib inline
+
+# ===================================================================================================================
+# 05-21-2019
+# 如何避免写for循环：
+# https://blog.csdn.net/wonengguwozai/article/details/78295484
+
+
 # ===================================================================================================================
 # 05-17-2019 
 # 分割一栏into两栏split one column into two columns
