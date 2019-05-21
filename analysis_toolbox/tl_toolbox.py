@@ -22,6 +22,10 @@ from IPython.display import clear_output
 # 如何避免写for循环：
 # https://blog.csdn.net/wonengguwozai/article/details/78295484
 
+# assert断言：
+# python assert断言是声明其布尔值必须为真的判定，如果发生异常就说明表达示为假。可以理解assert断言语句为raise-if-not，
+# 用来测试表示式，其返回值为假，就会触发异常。
+# https://www.cnblogs.com/liuchunxiao83/p/5298016.html
 
 # ===================================================================================================================
 # 05-17-2019 
