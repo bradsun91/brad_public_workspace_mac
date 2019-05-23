@@ -18,6 +18,22 @@ from IPython.display import clear_output
 %matplotlib inline
 
 # ===================================================================================================================
+# 05-23-2019
+# 使用字典嵌套：
+import collections
+tree = lambda:collections.defaultdict(tree)
+articles_dict=tree()
+for keyword in keywords_list:
+    for i, item in enumerate(splitted_T[keyword]):
+        sub_dict_value = ...
+        # 循环创建子字典：
+        sub_dict[splitted_T[keyword][i]] = sub_dict_value
+        # 循环将子字典套入到母字典中：
+        articles_dict[keyword][splitted_T[keyword][i]] = sub_dict[splitted_T[keyword][i]]
+articles_dict_ = dict(articles_dict)
+
+
+# ===================================================================================================================
 # 05-21-2019
 # 如何避免写for循环：
 # https://blog.csdn.net/wonengguwozai/article/details/78295484
