@@ -5,11 +5,12 @@ from sqlalchemy import create_engine
 
 # 向数据库中导入数据：
 # 连接数据库：
+duph
 
-db_ip = "192.168.1.162"
-db_user = "root"
-db_password = "root"
-db_name = "orig_article"
+db_ip = "192.168.1.162" #hst
+db_user = "root" #usr
+db_password = "root" #pw
+db_name = "orig_article" #db
 
 conn = pymysql.connect(db_ip,
                        db_user,
@@ -83,6 +84,8 @@ df = pd.read_sql_query(sql, engine)
 
 """UPDATE send_article_cj SET state=7 WHERE (title like '%KDJ%') AND state = 0"""
 
+"""UPDATE 20190923_brad_from_article_no_pics SET state=0 WHERE state = 6"""
+
 """SELECT * FROM send_article_brad where (typ like "%沪深指数%") AND state = 0"""
 
 """DELETE FROM send_article_brad where (typ like "%expmazhishi%") AND STATE = 0"""
@@ -90,6 +93,20 @@ df = pd.read_sql_query(sql, engine)
 """INSERT IGNORE INTO article_all_brad_20190910 (title, article, url, typ, state) VALUES(%s, %s, %s, %s, %s)""", (val0,val1,val2,val3,val4)
 
 # ====================================================================================================
+
+
+for title in titles:
+    try:
+        cursor.execute("""UPDATE article SET state=7 WHERE (title like '%{}%') AND authorid = 2""".format(title))
+        print(title, ": Processed")
+    except Exception as e:
+        print(title, ": Failed")
+        print(e)
+
+
+
+# ====================================================================================================
+
 
 
 调用tushare之前可以直接设置：
