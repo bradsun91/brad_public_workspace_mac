@@ -16,3 +16,8 @@
 *.shx
 *.shp
 *.sbn
+*.pyc
+*.dll
+*.chm
+*.pyd
+*.jpeg
