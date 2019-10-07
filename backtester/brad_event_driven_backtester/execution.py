@@ -14,7 +14,7 @@ except ImportError:
 
 from event import FillEvent, OrderEvent
 
-
+print("Executing execution.py")
 class ExecutionHandler(object):
     """
     The ExecutionHandler abstract class handles the interaction

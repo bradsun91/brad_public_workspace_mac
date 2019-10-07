@@ -8,7 +8,7 @@ from __future__ import print_function
 import numpy as np
 import pandas as pd
 
-
+print("Executing performance.py")
 def create_sharpe_ratio(returns, periods=252):
     """
     Create the Sharpe ratio for the strategy, based on a 

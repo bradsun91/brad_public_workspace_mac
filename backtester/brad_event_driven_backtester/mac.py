@@ -9,7 +9,11 @@ from execution import SimulatedExecutionHandler
 from portfolio import Portfolio
 from strategy import Strategy
 
+# Added by Brad on 20191006
+from plots import PlotEquityCurve
 
+# mac.py
+print("Executing mac.py")
 class MovingAverageCrossStrategy(Strategy):
     """
     Carries out a basic Moving Average Crossover strategy with a
@@ -57,7 +61,7 @@ class MovingAverageCrossStrategy(Strategy):
         """
         if event.type == 'MARKET':
             for symbol in self.symbol_list:
-                bars = self.bars.get_latest_bars_values(symbol, "Adj Close", N=self.long_window)
+                bars = self.bars.get_latest_bars_values(symbol, "close", N=self.long_window)
 
                 if bars is not None and bars != []:
                     short_sma = np.mean(bars[-self.short_window:])
@@ -84,9 +88,10 @@ class MovingAverageCrossStrategy(Strategy):
 if __name__ == "__main__":
     # csv_dir = REPLACE_WITH_YOUR_CSV_DIR_HERE
     csv_dir = os.getcwd()
-    symbol_list = ['AAPL','AMZN','JNJ','V','XOM','WMT','VZ','BHP','NEE','SPG']
+#     symbol_list = ['AAPL','AMZN','JNJ','V','XOM','WMT','VZ','BHP','NEE','SPG']
+    symbol_list = ['jd000d']
     initial_capital = 1000000.0
-    start_date = datetime.datetime(2014,4,1,0,0,0)
+    start_date = datetime.datetime(2015,4,1,0,0,0)
     heartbeat = 0.0
 
     backtest = Backtest(csv_dir, 

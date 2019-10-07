@@ -14,7 +14,7 @@ import pandas as pd
 
 from event import MarketEvent
 
-
+print("Executing data.py")
 class DataHandler(object):
     """
     DataHandler is an abstract base class providing an interface for
@@ -118,16 +118,16 @@ class HistoricCSVDataHandler(DataHandler):
         taken from Yahoo. Thus its format will be respected.
         """
         comb_index = None
+
         for s in self.symbol_list:
             # Load the CSV file with no header information, indexed on date
             self.symbol_data[s] = pd.io.parsers.read_csv(
                 os.path.join(self.csv_dir, '%s.csv' % s),
                 header=0, index_col=0, parse_dates=True,
-                names=[
-                    'Date', 'Open', 'High',
-                    'Low', 'Close', 'Adj Close', 'Volume'
+                names=['date', 'open', 'high','low', 'close', 'volume','open_int'
                 ]
-            ).sort_values('Date')
+            )
+            # ).sort_values('date')
 
             # Combine the index to pad forward values
             if comb_index is None:

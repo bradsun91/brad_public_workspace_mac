@@ -17,7 +17,7 @@ import pandas as pd
 
 from event import SignalEvent
 
-
+print("Executing strategy.py")
 class Strategy(object):
     """
     Strategy is an abstract base class providing an interface for

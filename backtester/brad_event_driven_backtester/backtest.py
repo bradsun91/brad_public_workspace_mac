@@ -13,7 +13,7 @@ except ImportError:
     import queue
 import time
 
-
+print("Executing backtest.py")
 class Backtest(object):
     """
     Enscapsulates the settings and components for carrying out
@@ -50,6 +50,9 @@ class Backtest(object):
         self.portfolio_cls = portfolio
         self.strategy_cls = strategy
 
+        # Added by Brad on 20191006
+        self.plots_cls = plots
+
         self.events = queue.Queue()
         
         self.signals = 0
@@ -77,10 +80,12 @@ class Backtest(object):
         """
         Executes the backtest.
         """
+        print("Running Backtest...")
         i = 0
         while True:
             i += 1
-            print(i)
+            # print(i)
+
             # Update the market bars
             if self.data_handler.continue_backtest == True:
                 self.data_handler.update_bars()
@@ -112,6 +117,25 @@ class Backtest(object):
                             self.portfolio.update_fill(event)
 
             time.sleep(self.heartbeat)
+
+	# OG version
+    # def _output_performance(self):
+    #     """
+    #     Outputs the strategy performance from the backtest.
+    #     """
+    #     self.portfolio.create_equity_curve_dataframe()
+        
+    #     print("Creating summary stats...")
+    #     stats = self.portfolio.output_summary_stats()
+        
+    #     print("Creating equity curve...")
+    #     print(self.portfolio.equity_curve.tail(10))
+    #     pprint.pprint(stats)
+
+    #     print("Signals: %s" % self.signals)
+    #     print("Orders: %s" % self.orders)
+    #     print("Fills: %s" % self.fills)
+
 
     def _output_performance(self):
         """

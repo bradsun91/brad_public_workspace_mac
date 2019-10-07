@@ -3,6 +3,7 @@
 
 # portfolio.py
 
+
 from __future__ import print_function
 
 import datetime
@@ -19,6 +20,7 @@ from event import FillEvent, OrderEvent
 from performance import create_sharpe_ratio, create_drawdowns
 
 
+print("Executing portfolio.py")
 class Portfolio(object):
     """
     The Portfolio class handles the positions and market
@@ -122,7 +124,7 @@ class Portfolio(object):
         for s in self.symbol_list:
             # Approximation to the real value
             market_value = self.current_positions[s] * \
-                self.bars.get_latest_bar_value(s, "Adj Close")
+                self.bars.get_latest_bar_value(s, "close")
             dh[s] = market_value
             dh['total'] += market_value
 
@@ -168,7 +170,7 @@ class Portfolio(object):
 
         # Update holdings list with new quantities
         fill_cost = self.bars.get_latest_bar_value(
-            fill.symbol, "Adj Close"
+            fill.symbol, "close"
         )
         cost = fill_dir * fill_cost * fill.quantity
         self.current_holdings[fill.symbol] += cost
@@ -258,3 +260,33 @@ class Portfolio(object):
 
         self.equity_curve.to_csv('equity.csv')
         return stats
+
+    # Added by Brad on 20191007:
+    def draw_summary_plots(self):
+        print("Testing draw_summary_plots")
+        self.equity_curve['equity_curve'].plot(figsize = (18,6))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
