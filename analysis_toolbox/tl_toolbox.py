@@ -18,6 +18,30 @@ from IPython.display import clear_output
 %matplotlib inline
 
 # ===================================================================================================================
+# 10-17-2019
+# 用difflib对比两个文本相似度
+import difflib #python 自带库，不需额外安装
+ 
+In [49]: test1
+Out[49]: ['你好', '我是谁']
+ 
+In [50]: test2
+Out[50]: ['你好啊', '我谁']
+ 
+In [51]: test3
+Out[51]: [12, 'nihao']
+ 
+In [52]: test4
+Out[52]: ['你好', 'woshi']
+ 
+In [53]: difflib.SequenceMatcher(a=test1, b=test2).quick_ratio()
+Out[53]: 0.0
+ 
+In [54]: difflib.SequenceMatcher(a=test1, b=test4).ratio()
+Out[54]: 0.5
+
+
+# ===================================================================================================================
 # 05-23-2019
 # 使用字典嵌套：
 import collections
