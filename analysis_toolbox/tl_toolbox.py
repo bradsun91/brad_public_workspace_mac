@@ -18,6 +18,29 @@ from IPython.display import clear_output
 %matplotlib inline
 
 # ===================================================================================================================
+# 10-23-2019
+# 从表里一行行读取数据，再写入到另一张表里
+test_list = []
+
+module_num = 0
+with open('20191023_test.csv') as f:
+    f_csv = csv.reader(f)
+    headers = next(f_csv)
+    for row in f_csv:
+        if int(row[0])>module_num:
+            module_num = int(row[0])
+        else:
+            joined = "".join(row[1:])
+            print(joined)
+            test_list.append("".join(row[1:]))
+            
+test_list_ = [(i,) for i in test_list]
+with open('test_to_csv.csv','w',newline='') as f_:
+    f_csv_ = csv.writer(f_)
+    f_csv_.writerows(test_list_)
+
+
+# ===================================================================================================================
 # 10-17-2019
 # 用difflib对比两个文本相似度
 import difflib #python 自带库，不需额外安装
