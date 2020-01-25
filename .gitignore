@@ -22,3 +22,5 @@
 *.pyd
 *.jpeg
 *.zip
+*.js
+*.css
