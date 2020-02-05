@@ -9,6 +9,21 @@ def market_data(tickers, start, end, col="All"):
 	start: 开始时间, format example: "2020-01-23"
 	end: 结束时间，同上
 
+	1. tickers 参数是不是必须的？如果不是，是不是返回所有ticker？
+	- Brad: 参数不是必须；如果不是，返回所有ticker对应的数据（不仅仅是ticker）
+
+
+	2. start, end 这对时间参数是不是必须的？如果不是，是不是返回所有时间段的data?
+	- Brad: 不是必须；如果不是，返回所有时间段的数据
+
+
+	3. 时间段过大或者ticker太多时，返回数据量需不需要做分页
+	- Brad: 按照Jeff的建议来做
+
+
+	4. 返回的数据如何排序
+	- Brad: 按照时间的顺序，最新的数据放在最下面，最旧的数据放在最上面
+
 	"""
 	return
 
@@ -17,6 +32,23 @@ def options_data(tickers, strike, start, end, expiration_date, direction, col="A
 	col：用法同上;
 	tickers: 用法同上；
 	Start／end: represents the date when we download the options data after the market closes of that day.格式同上
+
+
+	1. tickers 参数是不是必须的？如果不是，是不是返回所有ticker？
+	- Brad: 参数不是必须；如果不是，返回所有ticker对应的数据（不仅仅是ticker）
+
+
+	2. start, end 这对时间参数是不是必须的？如果不是，是不是返回所有时间段的data?
+	- Brad: 不是必须；如果不是，返回所有时间段的数据
+
+
+	3. 时间段过大或者ticker太多时，返回数据量需不需要做分页
+	- Brad: 按照Jeff的建议来做
+
+
+	4. 返回的数据如何排序
+	- Brad: 按照时间的顺序，最新的数据放在最下面，最旧的数据放在最上面
+
 	"""
 	return
 
@@ -30,6 +62,22 @@ def fundamental_data(tickers, start, end, sheet，col="All"):
 	2) income statement
 	3) cashflow statement 
 	4) key_statistics
+
+	1. tickers 参数是不是必须的？如果不是，是不是返回所有ticker？
+	- Brad: 参数不是必须；如果不是，返回所有ticker对应的数据（不仅仅是ticker）
+
+
+	2. start, end 这对时间参数是不是必须的？如果不是，是不是返回所有时间段的data?
+	- Brad: 不是必须；如果不是，返回所有时间段的数据
+
+
+	3. 时间段过大或者ticker太多时，返回数据量需不需要做分页
+	- Brad: 按照Jeff的建议来做
+
+
+	4. 返回的数据如何排序
+	- Brad: 按照时间的顺序，最新的数据放在最下面，最旧的数据放在最上面
+
 	"""
 	return
 
@@ -38,5 +86,22 @@ def market_cap(tickers, start, end):
 	对应数据：Hansen每日在进行更新的market cap的数据
 	tickers: 用法同上；
 	返回某一段时间某个ticker或者某些tickers的market cap
+
+	1. tickers 参数是不是必须的？如果不是，是不是返回所有ticker？
+	- Brad: 参数不是必须；如果不是，返回所有ticker对应的数据（不仅仅是ticker）
+
+
+	2. start, end 这对时间参数是不是必须的？如果不是，是不是返回所有时间段的data?
+	- Brad: 不是必须；如果不是，返回所有时间段的数据
+
+
+	3. 时间段过大或者ticker太多时，返回数据量需不需要做分页
+	- Brad: 按照Jeff的建议来做
+
+
+	4. 返回的数据如何排序
+	- Brad: 按照时间的顺序，最新的数据放在最下面，最旧的数据放在最上面
+
+
 	"""
 	return
