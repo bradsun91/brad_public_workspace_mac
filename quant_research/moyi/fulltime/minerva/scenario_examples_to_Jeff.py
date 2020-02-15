@@ -105,3 +105,43 @@ def market_cap(tickers, start, end):
 
 	"""
 	return
+
+# ==========  20200215 new added api  ===========
+def news_data(tickers, start, end):
+	"""
+	1. tickers 参数是不是必须的？如果不是，是不是返回所有ticker？
+	- Brad: 参数不是必须；如果不是，返回所有ticker对应的数据（不仅仅是ticker）
+
+
+	2. start, end 这对时间参数是不是必须的？如果不是，是不是返回所有时间段的data?
+	- Brad: 不是必须；如果不是，返回所有时间段的数据
+
+
+	3. 时间段过大或者ticker太多时，返回数据量需不需要做分页
+	- Brad: 按照Jeff的建议来做
+
+
+	4. 返回的数据如何排序
+	- Brad: 按照时间的顺序，最新的数据放在最下面，最旧的数据放在最上面
+	"""
+	return
+
+def macroeconomics_data(indicator, start, end):
+
+		"""
+	1. indicator 参数是不是必须的？如果不是，是不是返回所有indicator？
+	- Brad: 参数不是必须；如果不是，返回所有ticker对应的数据（不仅仅是indicator）
+
+
+	2. start, end 这对时间参数是不是必须的？如果不是，是不是返回所有时间段的data?
+	- Brad: 不是必须；如果不是，返回所有时间段的数据
+
+
+	3. 时间段过大或者indicator太多时，返回数据量需不需要做分页
+	- Brad: 按照Jeff的建议来做
+
+
+	4. 返回的数据如何排序
+	- Brad: 按照时间的顺序，最新的数据放在最下面，最旧的数据放在最上面
+	"""
+	return
