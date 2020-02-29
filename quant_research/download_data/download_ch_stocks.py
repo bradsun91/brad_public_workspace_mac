@@ -3,7 +3,7 @@ from datetime import datetime
 pd.set_option('max_colwidth',200)
 # import yfinance as yf
 import tushare as ts
-ts.set_token('2f31c3932ead9fcc3830879132cc3ec8df3566550f711889d4a30f67')
+ts.set_token('8ef5ec61cdd848715c57c11d58dd71da1271f76b2420d2bac8aef123')
 import time, urllib
 import glob
 import os
@@ -79,7 +79,7 @@ def download_tushare_stocks_data(start, end, ch_db_path, ticker_list):
 
 
 #设置token
-token='2f31c3932ead9fcc3830879132cc3ec8df3566550f711889d4a30f67'
+token='8ef5ec61cdd848715c57c11d58dd71da1271f76b2420d2bac8aef123'
 pro = ts.pro_api(token)
 codes = get_code()
 print("Public Company Numbers by today: ", len(codes))

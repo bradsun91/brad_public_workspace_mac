@@ -3,7 +3,7 @@ from datetime import datetime
 # import yfinance as yf
 import tushare as ts
 import time, urllib
-ts.set_token('2f31c3932ead9fcc3830879132cc3ec8df3566550f711889d4a30f67')
+ts.set_token('8ef5ec61cdd848715c57c11d58dd71da1271f76b2420d2bac8aef123')
 import glob
 import os
 
