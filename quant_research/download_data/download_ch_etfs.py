@@ -10,11 +10,13 @@ import os
 
 def handle_data_files_return_tickers(file_path):
     ch_etfs_df = pd.read_csv(file_path)
-    ch_etfs_df.dropna(inplace = True)
-    ch_etfs_df['基金规模\n[单位] 元'] = ch_etfs_df['基金规模\n[单位] 元'].apply(lambda x: float(x.replace(",","")))
-    ch_etfs_df['机构投资者持有份额\n[报告期] 2019中报\n[单位] 份'] = ch_etfs_df['机构投资者持有份额\n[报告期] 2019中报\n[单位] 份'].apply(lambda x: float(x.replace(",","")))
-    ch_etfs_df.sort_values("基金规模\n[单位] 元", ascending=False, inplace =True)
-    ch_etfs_df = ch_etfs_df
+#     ch_etfs_df.dropna(inplace = True)
+    try:
+        ch_etfs_df['基金规模\n[单位] 元'] = ch_etfs_df['基金规模\n[单位] 元'].apply(lambda x: float(x.replace(",","")))
+        ch_etfs_df['机构投资者持有份额\n[报告期] 2019中报\n[单位] 份'] = ch_etfs_df['机构投资者持有份额\n[报告期] 2019中报\n[单位] 份'].apply(lambda x: float(x.replace(",","")))
+        ch_etfs_df.sort_values("基金规模\n[单位] 元", ascending=False, inplace =True)
+    except Exception as e:
+        print(e)
     ch_etfs = ch_etfs_df.copy()
     ch_etfs['code'] =ch_etfs['证券代码'].apply(lambda x: str(x)[:6])
     ch_etfs_ticker = list(ch_etfs['code'].unique())
