@@ -8,7 +8,7 @@ from functools import reduce
 from datetime import datetime, timedelta
 import statsmodels.api as sm
 from statsmodels import regression
-
+import matplotlib.pyplot as plt
 # import yfinance as yf
 import tushare as ts
 import time, urllib
@@ -199,8 +199,7 @@ def get_sector_leaders():
 
 
 
-# merge df1 with df2
-def merge_df_for_reduce(df1, df2, date_col="date"):
+def merge_df_for_reduce(df1, df2, date_col="trade_date"):
     # By default the etf's date_col goes by 'date'
     merged = df1.merge(df2, on = date_col, how = 'outer')
     merged.sort_values(date_col, inplace = True)
