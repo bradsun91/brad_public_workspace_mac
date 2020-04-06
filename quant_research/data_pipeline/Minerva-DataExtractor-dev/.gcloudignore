@@ -1,0 +1,25 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+.git/
+
+__pycache__/
+*.py[cod]
+*$py.class
+/sp500_fundamentals_dfs/
+/sp500_key_statistics_dfs/
+/sp500_market_cap_dfs/
+/sp500_call/
+/sp500_put/
+
+/.vscode/
+*.csv
+*.json
+*.xml
+*.iml
