@@ -109,8 +109,8 @@ all_weather = all_weather()
 data_path = "/Users/miaoyuesun/Code_Workspace/brad_public_workspace_mac/quant_research/data_pipeline/"
 tickers_df = pd.read_csv(data_path+"most_recent_sp500_tickers.csv")
 sp500_tickers = list(tickers_df['sp500_tickers'])
-ticker_list = sp500_tickers+all_weather+us_sectors+mkt_etf+other_tickers
-# ticker_list = ['GLD']
+# ticker_list = sp500_tickers+all_weather+us_sectors+mkt_etf+other_tickers
+ticker_list = ['ROKU']
 
 import eventlet
 eventlet.monkey_patch()
