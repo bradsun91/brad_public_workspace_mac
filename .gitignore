@@ -29,4 +29,10 @@
 *.uml
 *.yaml
 *.txt
-*.
+*.xsd
+*.sbx
+*.prj
+*.npy
+*.h5
+*.npz
+*.sqlite
