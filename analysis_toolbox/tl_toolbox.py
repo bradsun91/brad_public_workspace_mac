@@ -1650,7 +1650,10 @@ def perf_df_analysis(perf2, show_minmax_returns = True, show_return_rank = True)
 
 
 # ===================================================================================================================
-
+"""
+自动数据库读取数据，计算排序，发送邮件
+# py file to refer to: zdsort.py
+"""
 import numpy as np
 import pandas as pd
 import datetime
@@ -1664,11 +1667,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.header import Header
-
-"""
-自动数据库读取数据，计算排序，发送邮件
-# py file to refer to: zdsort.py
-"""
 
 
 # 计算两天close涨幅 T1,T2
