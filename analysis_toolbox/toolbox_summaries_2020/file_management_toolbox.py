@@ -166,7 +166,23 @@ def concat_files_inside_folders(all_csv_files):
 
 
 
+def combine_csv_files(path_drct, output_file_name):
+    path = path_drct
+    interesting_files = glob.glob(path) 
+    header_saved = False
+    with open(output_file_name,'wb') as fout:
+        for filename in interesting_files:
+            with open(filename) as fin:
+                header = next(fin)
+                if not header_saved:
+                    fout.write(header.encode('utf-8'))
+                    header_saved = True
+                for line in fin:
+                    fout.write(line.encode('utf-8'))
 
+
+
+                    
 
 
 

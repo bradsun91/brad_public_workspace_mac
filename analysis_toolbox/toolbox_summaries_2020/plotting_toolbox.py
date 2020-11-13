@@ -150,3 +150,67 @@ def MA_crossover_plot_signals(MA1_sr, MA2_sr):
     fig = go.Figure(data=data, 
                     layout=layout)
     return py.iplot(fig, filename='plot_MAs_with_signals')
+
+
+
+
+# plot using iplot function to generate a more interactive plotting interface.
+# df should have its
+def interface_plt_1(df, col, main_title, y_label):
+    plot_1 = go.Scatter(x=df.index, y=df[col], name = col)
+
+    data = [plot_1]
+    layout = go.Layout(
+       title=main_title,
+       yaxis=dict(
+           title=y_label
+       )
+    )
+    fig = go.Figure(data=data, layout=layout)
+    plot_url = py.plot(fig, filename='styling-names.html')
+    
+    
+# plot using iplot function to generate a more interactive plotting interface.
+
+def interface_plt_2(df, col_1, col_2, main_title, y_label):
+    plot_1 = go.Scatter(x=df.index, y=df[col_1], name = col_1)
+    plot_2 = go.Scatter(x=df.index, y=df[col_2], name = col_2)
+
+    data = [plot_1, plot_2]
+    layout = go.Layout(
+       title = main_title,
+       yaxis=dict(
+           title=y_label
+       )
+    )
+    fig = go.Figure(data=data, layout=layout)
+    plot_url = py.plot(fig, filename='styling-names.html')
+    
+    
+    
+# plot using iplot function to generate a more interactive plotting interface.
+
+def interface_plt_3(df, col_1, col_2, col_3, main_title, y_label):
+    plot_1 = go.Scatter(x=unempt_df.index, y=unempt_df[col_1], name = col_1)
+    plot_2 = go.Scatter(x=unempt_df.index, y=unempt_df[col_2], name = col_2)
+    plot_3 = go.Scatter(x=unempt_df.index, y=risk_level_score_diff, name = col_3)
+
+
+    data = [plot_1, plot_2, plot_3]
+    layout = go.Layout(
+       title = main_title,
+       yaxis=dict(
+           title=y_label
+       )
+    )
+    fig = go.Figure(data=data, layout=layout)
+    plot_url = py.plot(fig, filename='styling-names.html')
+
+
+
+
+
+
+
+
+
