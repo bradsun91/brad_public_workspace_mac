@@ -1938,9 +1938,10 @@ def select_industry_from_sp500_wiki_for_io(sector_str):
 
 
 
-
-
-
+# ===================================================================================================================
+# 2020-11-16
+# Process data - last step: replace all "" with nan
+fin_data = fin_data.replace(r'', np.NaN)
 
 
 

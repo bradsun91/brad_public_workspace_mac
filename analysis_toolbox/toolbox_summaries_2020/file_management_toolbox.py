@@ -181,11 +181,12 @@ def combine_csv_files(path_drct, output_file_name):
                     fout.write(line.encode('utf-8'))
 
 
+# ===================================================================================================================
+# 读中文读出一大堆乱码，那么前面要加上以下代码：
+#-*- coding : utf-8-*-
+# coding:unicode_escape
 
-                    
-
-
-
+fin_data = pd.read_csv("fin_data_20201113.csv", encoding='gbk')
 
 
 
