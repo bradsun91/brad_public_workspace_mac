@@ -1771,7 +1771,6 @@ def process_daily_adj_close_price_data(factor_csv_file):
     return close_price_reninv
 
 
-
 def process_monthly_adjclose_price_data(factor_csv_file):
     factor_df = pd.read_csv(factor_csv_file)
     factor_ticker_list = list(factor_df.entity_ticker.unique())

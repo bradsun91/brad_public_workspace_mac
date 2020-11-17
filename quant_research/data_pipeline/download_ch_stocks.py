@@ -3,7 +3,7 @@ from datetime import datetime
 pd.set_option('max_colwidth',200)
 # import yfinance as yf
 import tushare as ts
-token='41cbc98ddd6c55a141cf281d0636c4ef25c13ff69e38bc400f3f4ebd'
+token='f54f66391ef9cf7675004be86d1ea74740d6df4df971cc10b3bbad91'
 ts.set_token(token)
 import time, urllib
 import glob
@@ -93,6 +93,15 @@ ticker_list = codes
 
 
 import eventlet
+import datetime
+starttime = datetime.datetime.now()
+print ("Executing...")
 eventlet.monkey_patch()
 
 download_tushare_stocks_data(start, end, ch_db_path, ticker_list)
+
+
+print("----------------------------------------------")
+endtime = datetime.datetime.now()
+duration = (endtime - starttime).seconds
+print ("Execution takes {} seconds".format(duration))

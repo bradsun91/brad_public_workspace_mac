@@ -3,7 +3,7 @@ from datetime import datetime
 # import yfinance as yf
 import tushare as ts
 import time, urllib
-ts.set_token('8ef5ec61cdd848715c57c11d58dd71da1271f76b2420d2bac8aef123')
+ts.set_token('f54f66391ef9cf7675004be86d1ea74740d6df4df971cc10b3bbad91')
 import glob
 import os
 
@@ -95,6 +95,15 @@ etf_path_to_csv = "/Users/miaoyuesun/Code_Workspace/brad_public_workspace_mac/da
 ticker_list = handle_data_files_return_tickers(etf_ticker_path)
 
 import eventlet
+import datetime
+starttime = datetime.datetime.now()
+print ("Executing...")
 eventlet.monkey_patch()
 
 download_tushare_etf_data(start, end, etf_path_to_csv, ticker_list)
+
+
+print("----------------------------------------------")
+endtime = datetime.datetime.now()
+duration = (endtime - starttime).seconds
+print ("Execution takes {} seconds".format(duration))
